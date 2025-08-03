@@ -26,18 +26,24 @@ function useWindowWidth() {
 
   return width;
 }
-
 export default function ServiceCards() {
   const [activeId, dispatch] = useReducer(cardReducer, null)
   const width = useWindowWidth()
   const isMobile = width !== null ? width <= 1315 : false;
   const [hoverId, setHoverId] = useState<number | null>(null)
+  const [infoId, setInfoId] = useState<number | null>(null)
 
   useEffect(() => {
     if (width !== null && isMobile && activeId !== null) {
       dispatch({ type: 'toggle', id: activeId })
     }
   }, [isMobile, activeId, width])
+
+
+  const toggleInfo = (id: number) => {
+    setInfoId(infoId === id ? null : id);
+  }
+
 
   return (
     <div className="flex justify-center gap-5 max-[1315px]:flex-wrap">
@@ -55,8 +61,10 @@ export default function ServiceCards() {
           onClick={() => {
             if (!isMobile) {
               dispatch({ type: 'toggle', id: card.id })
-            }
+            };
+            toggleInfo(card.id)
           }}
+
           onMouseEnter={() => !isMobile && setHoverId(card.id)}
           onMouseLeave={() => setHoverId(null)}
 
@@ -97,21 +105,59 @@ export default function ServiceCards() {
               transition={{ duration: 0.3, ease: 'easeOut' }}
               className="absolute inset-0 pointer-events-none"
             >
-              <div className="absolute top-2 right-3 w-60 p-2 bg-black/60 text-white text-sm rounded-bl-lg pointer-events-auto 
-              max-[489px]:relative max-[489px]:top-16 max-[489px]:right-auto max-[489px]:w-full
-            max-[489px]:bg-black/80 max-[489px]:text-center 
-              max-[489px]:p-4 max-[489px]:text-[12px] max-[489px]:rounded-3xl">
-                <motion.p
-                  key={card.text}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 10 }}
-                  transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-                >
-                  {card.text}
-                </motion.p>
-              </div>
 
+              {isMobile ? (
+                <div className="relative">
+                  <div
+                    className="ml-2 absolute top-2 right-2 w-11 h-11 backdrop-blur-sm bg-black/25 rounded-full text-white flex items-center justify-center cursor-pointer"
+                  >
+                    ?
+                  </div>
+
+              <AnimatePresence>
+  {infoId === card.id && (
+    <motion.div
+      className="absolute top-0 left-0 w-full min-h-[340px] p-2 backdrop-blur-xs bg-black/10 text-white text-lg flex justify-center items-center rounded-lg pointer-events-auto z-10"
+      initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+      animate={{ 
+        opacity: 1,
+        backdropFilter: 'blur(4px)',
+        transition: { duration: 0.3 }
+      }}
+      exit={{ 
+        opacity: 0,
+        backdropFilter: 'blur(0px)',
+        transition: { duration: 0.5, ease: "easeOut" }
+      }}
+    >
+      <motion.p
+        key={card.text}
+        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+        transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+      >
+        {card.text}
+      </motion.p>
+    </motion.div>
+  )}
+</AnimatePresence>
+                </div>
+              ) :
+                (
+                  <div className="absolute top-2 right-3 w-60 p-2 bg-black/60 text-white text-sm rounded-bl-lg pointer-events-auto">
+                    <motion.p
+                      key={card.text}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+                    >
+                      {card.text}
+                    </motion.p>
+                  </div>
+                )
+              }
               <div className="absolute bottom-0 left-0 right-0 backdrop-blur-sm p-3 flex items-center gap-3 pointer-events-auto">
                 <div className="text-white font-bold text-5xl tracking-[0.3rem] p-5 bg-black/25 max-[489px]:text-3xl">
                   {card.id}

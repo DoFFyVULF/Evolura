@@ -25,3 +25,13 @@ body {
 .bg-customGray{
   background-color: #171717;
 }
+
+
+@keyframes blur-in {
+  from { backdrop-filter: blur(0px); }
+  to { backdrop-filter: blur(4px); }
+}
+
+.blur-transition {
+  animation: blur-in 0.3s ease-out forwards;
+}
