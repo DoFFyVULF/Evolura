@@ -9,7 +9,7 @@ export default function Header() {
     const pathname = usePathname()
 
     return (
-        <header className="w-full flex justify-center p-4">
+        <header className="w-full flex justify-center p-4 relative z-10">
             <div className="w-full max-w-[460px]">
                 <div
                     className="flex flex-col sm:flex-row items-center justify-between bg-[#171717] rounded-lg shadow-md p-2 gap-3"
@@ -35,7 +35,6 @@ export default function Header() {
                         }
                         <span>Evolura studio</span>
                     </Link>
-
                     <Menu />
                 </div>
             </div>

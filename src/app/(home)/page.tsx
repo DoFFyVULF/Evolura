@@ -1,7 +1,7 @@
 'use client'
 import Image from "next/image";
 import Link from "next/link";
-import LinkToPage from "../components/Link";
+import LinkToPage from "../components/ui/Link";
 import WorkCard from "../work/workCard"
 import JournalCard from "../journal/journalCard";;
 import ServiceCards from "../components/ui/ServiceCards";
@@ -26,7 +26,7 @@ export default function Home() {
         </div>
       </section>
 
-      <div className="max-w-[1100px] mx-auto w-full px-4 ">
+      <div className="max-w-[1400px] mx-auto w-full px-4">
         <section className="flex flex-col justify-center items-center mt-24">
           <span className="uppercase p-3 bg-[#171717] rounded-lg ">about us</span>
           <div className="flex flex-col justify-center items-center text-center mt-8">
@@ -77,7 +77,7 @@ export default function Home() {
         </section>
 
         <section className="flex flex-col mt-24 relative max-[1028px]:flex-col-reverse">
-          <WorkCard />
+          <WorkCard cardWidth={450} cardCount={3}/>
           <LinkToPage href="/work" selectedText="Selected Work" moreText="More Work" className="block mt-8 top-2/4 left-9/12 max-[1028px]:static max-[1028px]:mb-8 max-[1028px]:mt-0" />
         </section>
 
@@ -105,8 +105,6 @@ export default function Home() {
             </Link>
           </StarBorder>
         </section>
-
-        <Footer/>
       </div>
     </div>
   );

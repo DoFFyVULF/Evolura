@@ -114,34 +114,34 @@ export default function ServiceCards() {
                     ?
                   </div>
 
-              <AnimatePresence>
-  {infoId === card.id && (
-    <motion.div
-      className="absolute top-0 left-0 w-full min-h-[340px] p-2 backdrop-blur-xs bg-black/10 text-white text-lg flex justify-center items-center rounded-lg pointer-events-auto z-10"
-      initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
-      animate={{ 
-        opacity: 1,
-        backdropFilter: 'blur(4px)',
-        transition: { duration: 0.3 }
-      }}
-      exit={{ 
-        opacity: 0,
-        backdropFilter: 'blur(0px)',
-        transition: { duration: 0.5, ease: "easeOut" }
-      }}
-    >
-      <motion.p
-        key={card.text}
-        initial={{ opacity: 0, y: 10, scale: 0.95 }}
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        exit={{ opacity: 0, y: 10, scale: 0.95 }}
-        transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
-      >
-        {card.text}
-      </motion.p>
-    </motion.div>
-  )}
-</AnimatePresence>
+                  <AnimatePresence>
+                    {infoId === card.id && (
+                      <motion.div
+                        className="absolute top-0 left-0 w-full min-h-[340px] p-2 backdrop-blur-xs bg-black/10 text-white text-lg flex justify-center items-center rounded-lg pointer-events-auto z-10"
+                        initial={{ opacity: 0, backdropFilter: 'blur(0px)' }}
+                        animate={{
+                          opacity: 1,
+                          backdropFilter: 'blur(4px)',
+                          transition: { duration: 0.3 }
+                        }}
+                        exit={{
+                          opacity: 0,
+                          backdropFilter: 'blur(0px)',
+                          transition: { duration: 0.5, ease: "easeOut" }
+                        }}
+                      >
+                        <motion.p
+                          key={card.text}
+                          initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                          transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+                        >
+                          {card.text}
+                        </motion.p>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               ) :
                 (

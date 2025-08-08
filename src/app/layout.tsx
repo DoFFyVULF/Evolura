@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {Fjalla_One} from "next/font/google"
 import Header from "./components/ui/header/Header";
 import "./globals.css";
+import Footer from "./components/ui/footer/Footer";
 
 const fjalla_One = Fjalla_One({
   subsets: ['latin'],
@@ -25,6 +26,7 @@ export default function RootLayout({
       >
         <Header/>
         {children}
+        <Footer/>
       </body>
     </html>
   );
