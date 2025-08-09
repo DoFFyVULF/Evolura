@@ -11,9 +11,9 @@ import ImageGalleryItem from "@/app/components/animation/ImageGalleryFade/ImageG
 
 const workPost = WorkCardsData;
 
-export async function generateMetadata({ params }: { params: { workPost: string } }) {
+export async function generateMetadata({ params }: { params: Promise<{ workPost: string }> }) {
     const { workPost: workPostParam } = await params;
-    const post = workPost.find((post) => post.link === workPostParam);
+    const post = WorkCardsData.find((post) => post.link === workPostParam);
 
     if (!post) {
         return { title: 'Project Not Found' };
