@@ -25,8 +25,12 @@ export async function generateMetadata({ params }: { params: { workPost: string 
     };
 }
 
-export default async function WorkPostPage({ params }: { params: { workPost: string } }) {
-    const { workPost: workPostParam } = await params;
+type WorkPostPageProps = {
+    params: Promise<{ workPost: string }>
+};
+
+export default async function WorkPostPage({ params }: WorkPostPageProps) {
+    const {workPost : workPostParam} = await params;
     const post = workPost.find((post) => post.link === workPostParam);
 
     if (!post) {
