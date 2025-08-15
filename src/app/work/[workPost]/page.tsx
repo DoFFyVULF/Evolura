@@ -1,4 +1,3 @@
-import SplitText from "@/app/components/animation/SplitText/SplitText";
 import TextType from "@/app/components/animation/TextType/TextType";
 import BlurText from "@/app/components/animation/BlurText/BlurText";
 import WorkCardsData from "@/app/data/WorkCards.data";

@@ -77,7 +77,7 @@ export default function Home() {
         </section>
 
         <section className="flex flex-col mt-24 relative max-[1028px]:flex-col-reverse">
-          <WorkCard cardWidth={450} cardCount={3}/>
+          <WorkCard cardWidth={450} cardCount={3} />
           <LinkToPage href="/work" selectedText="Selected Work" moreText="More Work" className="block mt-8 top-2/4 left-9/12 max-[1028px]:static max-[1028px]:mb-8 max-[1028px]:mt-0" />
         </section>
 

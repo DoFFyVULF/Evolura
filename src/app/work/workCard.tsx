@@ -4,20 +4,7 @@ import { AnimatePresence, motion } from "framer-motion"
 import Image from "next/image"
 import Link from "next/link"
 import { useState, useEffect, useCallback } from "react"
-
-function useWindowWidth() {
-    const [width, setWidth] = useState<number | null>(null);
-
-    useEffect(() => {
-        setWidth(window.innerWidth);
-        const handleResize = () => setWidth(window.innerWidth);
-        window.addEventListener('resize', handleResize);
-        return () => window.removeEventListener('resize', handleResize);
-    }, []);
-
-    return width;
-}
-
+import useWindowWidth from "../components/hooks/useWindowWidth"
 
 export default function WorkCard({ 
     cardWidth = 480, 

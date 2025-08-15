@@ -2,9 +2,11 @@ import Image from "next/image"
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion"
 import JournalCardData from "../data/JournalCards.data"
+import useWindowWidth from "../components/hooks/useWindowWidth";
 
 export default function JournalCard() {
-
+     const width = useWindowWidth();
+    const isMobile = width !== null ? width <= 1315 : false;
     const [hoverId, setHoverId] = useState<number | null>(null)
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
     const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 })
@@ -36,7 +38,7 @@ export default function JournalCard() {
             className="relative"
         >
             <AnimatePresence mode="wait">
-                {hoverId !== null && (
+                {(width != null && width > 1024) && (hoverId !== null) && (
                     <motion.div
                         key="cursor"
                         initial={{ opacity: 0, scale: 0.8 }}
