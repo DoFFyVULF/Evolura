@@ -55,7 +55,7 @@ const WorkCardsData: WorkCardType[] = [
         tag: 'Marketing',
         previewImg: '/Images/8.avif',
         link: 'marketing',
-         images: [
+        images: [
             '/Images/Insp/1.avif',
             '/Images/Insp/2.avif',
             '/Images/Insp/3.avif',
@@ -73,7 +73,7 @@ const WorkCardsData: WorkCardType[] = [
         tag: 'Branding',
         previewImg: '/Images/12.avif',
         link: 'momentum',
-         images: [
+        images: [
             '/Images/Mnt/1.webp',
             '/Images/Mnt/2.webp',
             '/Images/Mnt/3.webp',

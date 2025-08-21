@@ -5,39 +5,95 @@ import FaqItem from "./FaqItem"
 import FAQ from "../data/FAQ.data"
 import StarBorder from "../components/animation/StarBorder/StarBorder"
 import Link from "next/link"
+import CountUp from "../components/animation/CountUp/CountUp"
+import FadeContent from "../components/animation/FadeContent/FadeContent"
+import BlurText from "../components/animation/BlurText/BlurText"
+import SplitText from "../components/animation/SplitText/SplitText"
+import TextType from "../components/animation/TextType/TextType"
 
 export default function About() {
     return (
         <div className="max-w-[1400px] mx-auto w-full px-4">
             <section>
-                <div className="flex flex-row justify-between max-[950px]:flex-col max-[950px]:gap-3">
+                <div className="flex flex-row justify-between mt-24 max-[950px]:flex-col max-[950px]:gap-3">
                     <div className="justify-center max-[950]:flex">
-                        <span className="uppercase p-3 bg-[#171717] rounded-lg  text-center">our story</span>
+                        <TextType
+                            text='our story'
+                            typingSpeed={75}
+                            pauseDuration={1500}
+                            showCursor={false}
+                            cursorCharacter="|"
+                            className="uppercase p-3 bg-[#171717] rounded-lg  text-center"
+                        />
                     </div>
-                    <div className="flex flex-col float-right max-[950px]:float-none max-[950px]:text-center">
-                        <h1 className="text-4xl tracking-wider ">Designing Brands with Purpose</h1>
-                        <p className="text-[1.1rem] max-w-[400px] text-justify tracking-wider mt-6 mb-6 max-[950px]:max-w-none max-[950px]:text-center">Welcome to our agency, where imagination thrives and boundaries fade. In the digital realm where creativity meets technology, we are the architects of innovation.</p>
+                    <div className="flex flex-col float-right max-[950px]:float-none max-[950px]:text-center ">
+                        <BlurText
+                            text="Designing Brands with Purpose"
+                            delay={300}
+                            animateBy="words"
+                            direction="bottom"
+                            className="text-4xl tracking-wider text-center justify-center"
+                        />
+                        <SplitText
+                            text="Welcome to our agency, where imagination thrives and boundaries fade. In the digital realm where creativity meets technology, we are the architects of innovation."
+                            className="text-[1.1rem] max-w-[400px] text-justify tracking-wider mt-6 mb-6 max-[950px]:max-w-none max-[950px]:text-center"
+                            delay={30}
+                            duration={0.6}
+                            ease="power3.out"
+                            splitType="chars"
+                            from={{ opacity: 0, y: 40 }}
+                            to={{ opacity: 1, y: 0 }}
+                            threshold={0.1}
+                        />
                     </div>
                 </div>
                 <div className="">
-                    <div className="">
+                    <FadeContent blur>
                         <Image src='/Images/About/1.avif' alt="" width={1400} height={300} className="object-cover object-center" />
-                    </div>
+                    </FadeContent>
                     <div className="flex justify-around items-center-safe gap-6 relative -top-50  max-[950px]:flex-wrap  max-[950px]:top-6 max-[600px]:flex-none max-[600px]:flex-col">
                         <div className="flex flex-col items-center uppercase p-12 gap-2 justify-center backdrop-blur-xs bg-black/10 max-[950px]:border-[#808080] max-[950px]:border-1 max-[950px]:w-[250px]  max-[950px]:h-[150px] max-[600px]:w-full">
-                            <span className="text-5xl">18</span>
+                            <CountUp
+                                from={0}
+                                to={18}
+                                separator=","
+                                direction="up"
+                                duration={1}
+                                className="count-up-text text-5xl"
+                            />
                             <span>years of experience</span>
                         </div>
                         <div className="flex flex-col items-center uppercase p-12 gap-2  justify-center backdrop-blur-xs bg-black/10 max-[950px]:border-[#808080] max-[950px]:border-1 max-[950px]:w-[250px]  max-[950px]:h-[150px] max-[600px]:w-full">
-                            <span className="text-5xl">125</span>
+                            <CountUp
+                                from={0}
+                                to={125}
+                                separator=","
+                                direction="up"
+                                duration={2}
+                                className="count-up-text text-5xl"
+                            />
                             <span>projects completed</span>
                         </div>
                         <div className="flex flex-col items-center uppercase p-12 gap-2  justify-center backdrop-blur-xs bg-black/10 max-[950px]:border-[#808080] max-[950px]:border-1 max-[950px]:w-[250px]  max-[950px]:h-[150px] max-[600px]:w-full">
-                            <span className="text-5xl">85</span>
+                            <CountUp
+                                from={0}
+                                to={85}
+                                separator=","
+                                direction="up"
+                                duration={3}
+                                className="count-up-text text-5xl"
+                            />
                             <span>happy customers</span>
                         </div>
                         <div className="flex flex-col items-center uppercase p-12 gap-2  justify-center backdrop-blur-xs bg-black/10 max-[950px]:border-[#808080] max-[950px]:border-1 max-[950px]:w-[250px]  max-[950px]:h-[150px] max-[600px]:w-full">
-                            <span className="text-5xl">24</span>
+                            <CountUp
+                                from={0}
+                                to={24}
+                                separator=","
+                                direction="up"
+                                duration={4}
+                                className="count-up-text text-5xl"
+                            />
                             <span>awards earned</span>
                         </div>
                     </div>
@@ -91,7 +147,7 @@ export default function About() {
                     <div className="text-center max-w-2xs p-3 pl-7 pr-7 bg-[#171717] rounded">
                         <span className="uppercase">trusted by innovative teams</span>
                     </div>
-                    <div className="flex flex-row justify-between items-center gap-12 p-12 max-[550px]:flex-col">
+                    <div className="flex flex-row justify-between items-center gap-12 p-12 max-[650px]:flex-col">
                         <img src="/Images/logos/1.svg" alt="" className="max-w-23 " />
                         <img src="/Images/logos/2.svg" alt="" className="max-w-23 " />
                         <img src="/Images/logos/3.svg" alt="" className="max-w-23 " />

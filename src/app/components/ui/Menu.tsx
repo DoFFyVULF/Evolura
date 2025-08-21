@@ -3,7 +3,11 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-export default function Menu() {
+interface MenuProps {
+  isMobile?: boolean;
+}
+
+export default function Menu({ isMobile = false }: MenuProps) {
   const pathname = usePathname()
 
   const links = [
@@ -13,17 +17,25 @@ export default function Menu() {
     { href: '/contact', label: 'Contact' },
   ]
 
+  // Используем один и тот же JSX для сервера и клиента
   return (
-    <ul className="flex space-x-2">
+    <ul className={isMobile ? "py-2" : "flex flex-wrap justify-center gap-2"}>
       {links.map((item) => (
-        <li key={item.href}>
+        <li key={item.href} className={isMobile ? "block" : "flex-1"}>
           <Link
             href={item.href}
-            className={
-              pathname === item.href
-                ? 'bg-red-500 text-white px-3 py-2 rounded text-sm'
-                : 'bg-gray-700 text-white hover:bg-gray-600 px-3 py-2 rounded text-sm transition-colors'
-            }
+            className={`${isMobile 
+              ? `block px-4 py-3 text-sm font-medium transition-all duration-300 ${
+                  pathname === item.href
+                    ? 'bg-gradient-to-r from-red-500 to-red-600 text-white'
+                    : 'text-gray-200 hover:bg-gray-800/50 hover:text-white'
+                }`
+              : `px-4 py-2 rounded-xl text-sm font-medium transition-all duration-300 transform hover:scale-105 ${
+                  pathname === item.href
+                    ? 'bg-gradient-to-r from-red-500 to-red-600 text-white shadow-lg shadow-red-500/30'
+                    : 'bg-gray-800/50 text-gray-200 hover:bg-gray-700/70 hover:text-white'
+                }`
+            }`}
           >
             {item.label}
           </Link>

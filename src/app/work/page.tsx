@@ -3,28 +3,35 @@ import StarBorder from "../components/animation/StarBorder/StarBorder";
 import Link from "next/link";
 import BlurText from "../components/animation/BlurText/BlurText";
 import FadeContent from "../components/animation/FadeContent/FadeContent";
+import SplitText from "../components/animation/SplitText/SplitText";
 export default function Work() {
     return (
         <div className="max-w-[1400px] mx-auto w-full h-full px-2.5">
             <div className="flex flex-col mt-24">
                 <div className="flex flex-col items-center">
-                       <BlurText
-                    text="Work"
-                    delay={300}
-                    animateBy="words"
-                    direction="bottom"
-                    className="sm:text-9xl text-6xl uppercase tracking-[1rem] text-center"
-                />
+                    <BlurText
+                        text="Work"
+                        delay={300}
+                        animateBy="words"
+                        direction="bottom"
+                        className="sm:text-9xl text-6xl uppercase tracking-[1rem] text-center"
+                    />
+                    <SplitText
+                        text="Explore our work, where creative branding and powerful marketing strategies come together to craft memorable experiences that resonate with audiences."
+                        className="text-lg text-center max-w-2xl  mt-4 mb-12"
+                        delay={30}
+                        duration={0.6}
+                        ease="power3.out"
+                        splitType="chars"
+                        from={{ opacity: 0, y: 40 }}
+                        to={{ opacity: 1, y: 0 }}
+                        threshold={0.1}
 
-                <FadeContent blur={true} duration={1000} easing="ease-out" initialOpacity={0} >
-                    <p className="text-lg text-center max-w-2xl  mt-4 mb-12">Explore our work, where creative branding and powerful marketing strategies come together to craft memorable experiences that resonate with audiences.</p>
-                </FadeContent>
+                    />
                 </div>
-
-           
-                  <WorkCard/>
-            
-
+                <FadeContent blur>
+                    <WorkCard />
+                </FadeContent>
                 <StarBorder
                     as="button"
                     className="w-full mt-26 mb-26"

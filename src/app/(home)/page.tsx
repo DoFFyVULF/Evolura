@@ -6,25 +6,33 @@ import WorkCard from "../work/workCard"
 import JournalCard from "../journal/journalCard";;
 import ServiceCards from "../components/ui/ServiceCards";
 import StarBorder from "../components/animation/StarBorder/StarBorder";
-import Footer from "../components/ui/footer/Footer";
-
+import BlurText from "../components/animation/BlurText/BlurText";
+import FadeContent from "../components/animation/FadeContent/FadeContent";
 
 export default function Home() {
   return (
     <div className="">
-      <section className="flex flex-col justify-center items-center mt-3">
-        <h1 className="sm:text-9xl text-6xl uppercase">Evolura</h1>
-        <div className="relative w-full max-w-[1800px] mx-auto mt-8 h-[700px] rounded-lg overflow-hidden">
-          <Image
-            src="/Images/1.avif"
-            fill
-            priority
-            alt=""
-            sizes="(max-width: 1800px) 100vw, 1800px"
-            className="object-cover object-center"
+      <FadeContent blur={true} duration={1000} easing="ease-out">
+        <section className="flex flex-col justify-center items-center mt-3">
+          <BlurText
+            text="Evolura"
+            delay={300}
+            animateBy="words"
+            direction="bottom"
+            className="sm:text-9xl text-6xl uppercase"
           />
-        </div>
-      </section>
+          <div className="relative w-full max-w-[1800px] mx-auto mt-8 h-[700px] rounded-lg overflow-hidden">
+            <Image
+              src="/Images/1.avif"
+              fill
+              priority
+              alt=""
+              sizes="(max-width: 1800px) 100vw, 1800px"
+              className="object-cover object-center"
+            />
+          </div>
+        </section>
+      </FadeContent>
 
       <div className="max-w-[1400px] mx-auto w-full px-4">
         <section className="flex flex-col justify-center items-center mt-24">
@@ -83,7 +91,7 @@ export default function Home() {
 
 
         <section className="flex flex-col mt-24 relative max-[1028px]:flex-col-reverse">
-          <JournalCard />
+          <JournalCard cardCount={3} />
           <LinkToPage href="/journal" selectedText="Lastet Posts" moreText="Mote Posts" className="block mt-8 top-2/4 left-9/12 max-[1028px]:static max-[1028px]:mb-8 max-[1028px]:mt-0" />
         </section>
 
